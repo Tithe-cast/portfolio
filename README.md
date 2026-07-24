@@ -96,5 +96,5 @@ I am a **Full-Stack Developer** focused on engineering high-performance, scalabl
 </p>
 
 <p align="center">
-  <i>"Code is poetry, and I am the poet."</i>
+  <i>"Inspired by ideas, driven by code."</i>
 </p>
