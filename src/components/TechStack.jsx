@@ -458,7 +458,7 @@ const TechStack = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-on-background leading-tight"
         >
           Modern{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-400 to-rose-400">
@@ -483,7 +483,7 @@ const TechStack = () => {
               ${
                 activeTab === tab
                   ? 'bg-gradient-to-r from-blue-500 to-rose-500 border-transparent text-white shadow-lg shadow-blue-500/20'
-                  : 'bg-white/5 border-white/10 text-white/50 hover:border-blue-400/30 hover:text-white/80'
+                  : 'bg-surface-container-high/60 border-outline-variant/10 text-on-surface-variant/70 hover:border-blue-400/30 hover:text-on-background'
               }`}
           >
             {tab}
@@ -505,7 +505,7 @@ const TechStack = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -8 }}
               transition={{ duration: 0.3, delay: i * 0.03 }}
-              className="group relative bg-white/[0.03] border border-white/[0.07] rounded-2xl p-5 flex flex-col gap-4 hover:border-white/[0.14] hover:bg-white/[0.055] transition-all duration-300 cursor-default overflow-hidden"
+              className="group relative bg-surface-container-high/30 border border-outline-variant/10 rounded-2xl p-5 flex flex-col gap-4 hover:border-outline-variant/20 hover:bg-surface-container-high/60 transition-all duration-300 cursor-default overflow-hidden"
             >
               {/* Hover tint */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-blue-600/5 to-transparent rounded-2xl pointer-events-none" />
@@ -513,7 +513,7 @@ const TechStack = () => {
               {/* Top row — logo + badge */}
               <div className="flex items-start justify-between gap-2 relative z-10">
                 {/* Logo box */}
-                <div className="w-12 h-12 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-surface-container-high/80 flex items-center justify-center shrink-0">
                   {tech.logo}
                 </div>
 
@@ -526,12 +526,12 @@ const TechStack = () => {
               </div>
 
               {/* Name */}
-              <p className="text-[15px] font-bold text-white leading-snug relative z-10">
+              <p className="text-[15px] font-bold text-on-background leading-snug relative z-10">
                 {tech.name}
               </p>
 
               {/* Description */}
-              <p className="text-[12px] text-white/40 leading-relaxed relative z-10 flex-1">
+              <p className="text-[12px] text-on-surface-variant/80 leading-relaxed relative z-10 flex-1">
                 {tech.desc}
               </p>
             </motion.div>
