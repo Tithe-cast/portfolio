@@ -17,7 +17,7 @@ export default function Footer() {
     },
     {
       name: 'WhatsApp',
-      url: '#',
+      url: 'https://wa.me/8801798401376?text=Hello%20Syeda,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect.',
       icon: 'https://cdn.simpleicons.org/whatsapp/25D366',
     },
     {

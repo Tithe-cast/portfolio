@@ -56,8 +56,8 @@ export default function Contact() {
         />
       ),
       title: 'Call',
-      value: '+88013088....',
-      link: 'tel:+88013088',
+      value: '+8801308845480',
+      link: 'tel:+8801308845480',
       label: 'Call me',
       hoverColor: 'hover:border-blue-400',
     },
@@ -86,6 +86,23 @@ export default function Contact() {
       link: 'https://www.linkedin.com/in/syeda-sima/',
       label: 'Text me',
       hoverColor: 'hover:border-blue-500',
+    },
+    {
+      icon: (
+        <svg
+          className="text-emerald-500 group-hover:scale-110 transition-transform fill-current"
+          width={32}
+          height={32}
+          viewBox="0 0 24 24"
+        >
+          <path d="M12.031 2c-5.514 0-9.99 4.477-9.99 9.99 0 2.08.636 4.015 1.733 5.62l-1.137 4.156 4.27-1.121a9.929 9.929 0 0 0 5.124 1.411c5.515 0 9.99-4.477 9.99-9.99A9.993 9.993 0 0 0 12.031 2zm6.275 14.18c-.28.79-1.39 1.4-1.9 1.44-.45.04-.9.2-2.91-.6-2.58-1.02-4.22-3.66-4.35-3.83-.13-.17-1.03-1.37-1.03-2.61 0-1.24.65-1.85.88-2.1.23-.25.5-.31.67-.31h.47c.15 0 .36-.06.56.42.2.49.69 1.68.75 1.8.06.12.1.26.02.43-.08.17-.12.28-.25.43-.13.15-.27.34-.39.46-.13.13-.27.27-.12.53.15.26.68 1.13 1.46 1.82.99.88 1.83 1.15 2.1 1.28.27.13.43.11.59-.08.16-.19.69-.81.88-1.08.19-.27.37-.23.63-.13.26.1 1.64.78 1.92.92.28.14.47.2.53.31.07.11.07.64-.21 1.43z" />
+        </svg>
+      ),
+      title: 'WhatsApp',
+      value: '+8801798401376',
+      link: 'https://wa.me/8801798401376?text=Hello%20Syeda,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect.',
+      label: 'Message me',
+      hoverColor: 'hover:border-emerald-500',
     },
   ];
 
