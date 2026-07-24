@@ -7,11 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import devPilotAI from '@/assets/devpilot_ai.png';
-import hireForge from '@/assets/hireforge.png';
-import ticketBari from '@/assets/ticketbari.png';
-import digiTools from '@/assets/digitools.png';
-import docAppoint from '@/assets/docappoint.png';
+import { projectsData as allProjects } from '@/data/projectsData';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,112 +19,6 @@ const Projects = () => {
 
   const brandGradient = 'from-[#2563eb] via-[#a855f7] to-[#f43f5e]';
   const categories = ['All', 'Next.js', 'React', 'Full-Stack'];
-
-  const allProjects = [
-    {
-      title: 'DevPilot AI v1.0',
-      subtitle: 'AI-Powered Software Engineering Workspace',
-      description:
-        'DevPilot AI is a professional, AI-powered software engineering workspace designed to assist developers throughout the software development lifecycle. The platform provides automated code review, bug fixing, documentation generation, smart project recommendations, analytics, and a context-aware chat assistant.',
-      tags: [
-        'React',
-        'TypeScript',
-        'Vite',
-        'Node.js',
-        'Express.js',
-        'MongoDB',
-        'Mongoose',
-        'TanStack Query',
-        'Tailwind CSS',
-        'JWT',
-        'Google OAuth',
-        'REST API',
-        'Recharts',
-      ],
-      categories: ['React', 'Full-Stack'],
-      image: devPilotAI,
-      liveLink: 'https://dev-pilot-ai-v1-0.vercel.app',
-      repoLink: 'https://github.com/Tithe-cast/DevPilot-AI-v1.0.',
-    },
-    {
-      title: 'HireForge',
-      subtitle: 'Full-Stack Developer Job Portal',
-      description:
-        'Full-stack developer job portal with mandatory salary transparency and real tech-stack filtering. Built with Next.js 14, TypeScript, MongoDB and JWT auth.',
-      tags: [
-        'Next.js',
-        'React',
-        'TypeScript',
-        'Tailwind CSS',
-        'Recharts',
-        'Node.js',
-        'MongoDB',
-        'Mongoose',
-        'JWT',
-        'Zod',
-      ],
-      categories: ['Next.js', 'Full-Stack'],
-      image: hireForge,
-      liveLink: 'https://hire-forge-gilt.vercel.app',
-      repoLink: 'https://github.com/Tithe-cast/HireForge',
-    },
-    {
-      title: 'TicketBari',
-      subtitle: 'Online Ticket Booking Platform',
-      description:
-        'Built a scalable REST API for an online ticket booking platform, enabling secure authentication, ticket management, bookings, Stripe payments, and role-based access for users, vendors, and administrators.',
-      tags: [
-        'Next.js',
-        'React',
-        'TypeScript',
-        'Node.js',
-        'Express.js',
-        'MongoDB',
-        'BetterAuth',
-        'JWT',
-        'Stripe',
-        'Tailwind CSS',
-        'DaisyUI',
-        'TanStack Query',
-        'Framer Motion',
-      ],
-      categories: ['Next.js', 'Full-Stack'],
-      image: ticketBari,
-      liveLink: 'https://ticket-bari-client-green.vercel.app/',
-      repoLink: 'https://github.com/Tithe-cast/TicketBari_client',
-    },
-    {
-      title: 'DigiTools',
-      subtitle: 'Premium Digital Tools Marketplace',
-      description:
-        'A modern, fully responsive digital tools marketplace built with React, Tailwind CSS and DaisyUI. Users can explore, add and manage premium digital products with a shopping cart, enhanced UI interactions and real-time toast notifications.',
-      tags: ['React.js', 'Vite', 'JavaScript', 'Tailwind CSS', 'React-Toastify', 'JSON'],
-      categories: ['React'],
-      image: digiTools,
-      liveLink: 'https://classy-blini-87d8e8.netlify.app',
-      repoLink: 'https://github.com/Tithe-cast/DigiTools-Platform',
-    },
-    {
-      title: 'DocAppoint',
-      subtitle: 'Doctor Appointment Manager',
-      description:
-        'A modern doctor appointment booking platform that enables users to find doctors, book appointments, manage bookings, and securely access their accounts through an intuitive, responsive interface.',
-      tags: [
-        'React',
-        'Tailwind CSS',
-        'Node.js',
-        'Express.js',
-        'MongoDB',
-        'JWT',
-        'BetterAuth',
-        'REST API',
-      ],
-      categories: ['React', 'Full-Stack'],
-      image: docAppoint,
-      liveLink: 'https://docappoint-client-virid.vercel.app',
-      repoLink: 'https://github.com/Tithe-cast/docappoint-client',
-    },
-  ];
 
   const filteredProjects =
     activeCategory === 'All'
@@ -389,30 +279,39 @@ const Projects = () => {
                         </div>
 
                         {/* ── Buttons ── */}
-                        <div className="flex gap-2 pt-1">
+                        <div className="flex gap-2 pt-1 flex-wrap sm:flex-nowrap">
+                          <Link
+                            href={`/projects/${project.id}`}
+                            className={`flex-1 flex items-center justify-center gap-1 bg-linear-to-r ${brandGradient} text-white px-3 py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-wider transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] active:scale-[0.97] relative overflow-hidden group/btn`}
+                          >
+                            <span className="relative z-10 flex items-center gap-1">
+                              <span className="material-symbols-outlined text-sm">
+                                info
+                              </span>
+                              Details
+                            </span>
+                          </Link>
+
                           <Link
                             href={project.liveLink}
                             target="_blank"
-                            className={`flex-1 flex items-center justify-center gap-1.5 bg-linear-to-r ${brandGradient} text-white px-4 py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-wider transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] active:scale-[0.97] relative overflow-hidden group/btn`}
+                            className="flex-1 flex items-center justify-center gap-1 bg-white/[0.03] backdrop-blur-md text-white/40 px-3 py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-wider border border-white/5 hover:bg-white/[0.06] hover:text-white hover:border-white/10 transition-all duration-300 active:scale-[0.97] group/btn"
                           >
-                            <span className="relative z-10 flex items-center gap-1.5">
-                              <span className="material-symbols-outlined text-sm transition-transform duration-300 group-hover/btn:rotate-[-45deg]">
-                                play_arrow
-                              </span>
-                              Live Demo
+                            <span className="material-symbols-outlined text-sm">
+                              arrow_outward
                             </span>
-                            <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 -skew-x-12" />
+                            Live
                           </Link>
 
                           <Link
                             href={project.repoLink}
                             target="_blank"
-                            className="flex items-center justify-center gap-1.5 bg-white/[0.03] backdrop-blur-md text-white/40 px-4 py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-wider border border-white/5 hover:bg-white/[0.06] hover:text-white hover:border-white/10 transition-all duration-300 active:scale-[0.97] group/btn"
+                            className="flex items-center justify-center gap-1 bg-white/[0.03] backdrop-blur-md text-white/40 px-3 py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-wider border border-white/5 hover:bg-white/[0.06] hover:text-white hover:border-white/10 transition-all duration-300 active:scale-[0.97] group/btn"
                           >
-                            <span className="material-symbols-outlined text-sm transition-transform duration-300 group-hover/btn:scale-110">
+                            <span className="material-symbols-outlined text-sm">
                               code
                             </span>
-                            Source
+                            Github
                           </Link>
                         </div>
                       </div>

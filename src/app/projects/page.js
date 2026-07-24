@@ -7,71 +7,12 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import TiltCard from '@/components/TiltCard';
-
-// ✅ Fixed Imports
-import devPilotAIImg from '@/assets/devpilot_ai.png';
-import hireForgeImg from '@/assets/hireforge.png';
-import ticketBariImg from '@/assets/ticketbari.png';
-import digiToolsImg from '@/assets/digitools.png';
-import docAppointImg from '@/assets/docappoint.png';
+import { projectsData as projects } from '@/data/projectsData';
 
 const ProjectsPage = () => {
   const [filter, setFilter] = useState('All');
 
   const categories = ['All', 'Full-Stack', 'Frontend', 'UI/UX'];
-
-  const projects = [
-    {
-      title: 'DevPilot AI v1.0',
-      category: 'Full-Stack',
-      description:
-        'DevPilot AI is a professional, AI-powered software engineering workspace designed to assist developers throughout the software development lifecycle.',
-      tags: ['React', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'REST API'],
-      image: devPilotAIImg,
-      liveLink: 'https://dev-pilot-ai-v1-0.vercel.app',
-      repoLink: 'https://github.com/Tithe-cast/DevPilot-AI-v1.0',
-    },
-    {
-      title: 'HireForge',
-      category: 'Full-Stack',
-      description:
-        'Full-stack developer job portal with mandatory salary transparency and real tech-stack filtering. Built with Next.js 14, TypeScript, MongoDB and JWT auth.',
-      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'MongoDB', 'JWT'],
-      image: hireForgeImg,
-      liveLink: 'https://hire-forge-gilt.vercel.app',
-      repoLink: 'https://github.com/Tithe-cast/HireForge',
-    },
-    {
-      title: 'TicketBari',
-      category: 'Full-Stack',
-      description:
-        'Built a scalable REST API for an online ticket booking platform, enabling secure authentication, ticket management, bookings, Stripe payments, and role-based access.',
-      tags: ['Next.js', 'React', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'Stripe'],
-      image: ticketBariImg,
-      liveLink: 'https://ticketbari-server-55dz.onrender.com',
-      repoLink: 'https://github.com/Tithe-cast/TicketBari_client',
-    },
-    {
-      title: 'DigiTools',
-      category: 'Frontend',
-      description:
-        'A modern, fully responsive digital tools marketplace built with React, Tailwind CSS and DaisyUI. Users can explore, add and manage premium digital products.',
-      tags: ['React', 'JavaScript', 'Tailwind CSS', 'Vite'],
-      image: digiToolsImg,
-      liveLink: 'https://classy-blini-87d8e8.netlify.app',
-      repoLink: 'https://github.com/Tithe-cast/DigiTools-Platform',
-    },
-    {
-      title: 'DocAppoint',
-      category: 'Full-Stack',
-      description:
-        'A modern doctor appointment booking platform that enables users to find doctors, book appointments, manage bookings, and securely access their accounts.',
-      tags: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'BetterAuth'],
-      image: docAppointImg,
-      liveLink: 'https://docappoint-server-dl42.onrender.com',
-      repoLink: 'https://github.com/Tithe-cast/docappoint-client',
-    },
-  ];
 
   const filteredProjects =
     filter === 'All' ? projects : projects.filter((p) => p.category === filter);
@@ -142,7 +83,7 @@ const ProjectsPage = () => {
 
                   <div className="p-8 flex flex-col flex-grow">
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag) => (
+                      {project.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
                           className="text-[9px] font-bold uppercase tracking-wider text-primary"
@@ -158,28 +99,39 @@ const ProjectsPage = () => {
                       {project.description}
                     </p>
 
-                    <div className="mt-auto pt-6 flex gap-4 border-t border-outline-variant/5">
+                    <div className="mt-auto pt-6 flex gap-4 border-t border-outline-variant/5 justify-between">
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="text-[10px] font-black uppercase tracking-widest flex items-center gap-1 hover:text-primary transition-colors text-primary"
+                      >
+                        <span className="material-symbols-outlined text-sm">
+                          info
+                        </span>
+                        Details
+                      </Link>
+
                       <a
                         href={project.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:text-primary transition-colors"
+                        className="text-[10px] font-black uppercase tracking-widest flex items-center gap-1 hover:text-primary transition-colors"
                       >
-                        Live Demo{' '}
                         <span className="material-symbols-outlined text-sm">
                           arrow_outward
                         </span>
+                        Live
                       </a>
+
                       <a
                         href={project.repoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:text-primary transition-colors"
+                        className="text-[10px] font-black uppercase tracking-widest flex items-center gap-1 hover:text-primary transition-colors"
                       >
-                        Source{' '}
                         <span className="material-symbols-outlined text-sm">
                           code
                         </span>
+                        Github
                       </a>
                     </div>
                   </div>

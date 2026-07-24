@@ -1,0 +1,140 @@
+import devPilotAIImg from '@/assets/devpilot_ai.png';
+import hireForgeImg from '@/assets/hireforge.png';
+import ticketBariImg from '@/assets/ticketbari.png';
+import digiToolsImg from '@/assets/digitools.png';
+import docAppointImg from '@/assets/docappoint.png';
+
+export const projectsData = [
+  {
+    id: 'devpilot-ai',
+    title: 'DevPilot AI v1.0',
+    subtitle: 'AI-Powered Software Engineering Workspace',
+    description:
+      'DevPilot AI is a professional, AI-powered software engineering workspace designed to assist developers throughout the software development lifecycle. The platform provides automated code review, bug fixing, documentation generation, smart project recommendations, analytics, and a context-aware chat assistant.',
+    category: 'Full-Stack',
+    categories: ['React', 'Full-Stack'],
+    tags: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'TanStack Query',
+      'Tailwind CSS',
+      'JWT',
+      'Google OAuth',
+      'REST API',
+      'Recharts',
+    ],
+    image: devPilotAIImg,
+    liveLink: 'https://dev-pilot-ai-v1-0.vercel.app',
+    repoLink: 'https://github.com/Tithe-cast/DevPilot-AI-v1.0.',
+    challenges: [
+      'High response latency during AI code review and chatbot interaction: Solved by implementing server-sent events (SSE) streaming on the backend, allowing responses to display in real-time on the frontend.',
+      'Gemini token limit constraints when analyzing code: Optimized by creating a custom workspace scanner that ignores binary, media, and dependency folders, packaging only targeted source files in the LLM context.',
+    ],
+  },
+  {
+    id: 'hireforge',
+    title: 'HireForge',
+    subtitle: 'Full-Stack Developer Job Portal',
+    description:
+      'Full-stack developer job portal with mandatory salary transparency and real tech-stack filtering. Built with Next.js, React, TypeScript, and MongoDB, this platform enforces transparent developer hiring practices.',
+    category: 'Full-Stack',
+    categories: ['Next.js', 'Full-Stack'],
+    tags: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Recharts',
+      'Node.js',
+      'MongoDB',
+      'Mongoose',
+      'JWT',
+      'Zod',
+    ],
+    image: hireForgeImg,
+    liveLink: 'https://hire-forge-gilt.vercel.app',
+    repoLink: 'https://github.com/Tithe-cast/HireForge',
+    challenges: [
+      'Combining complex multi-dimensional query filters (salary, role type, skill tags) smoothly: Solved by designing aggregated MongoDB queries with indexes and linking state dynamically with Next.js URL SearchParams.',
+      'SEO optimization vs. Interactive client features: Implemented Next.js Server Components for page rendering and metadata, while keeping job filters and dashboards as lightweight Client Components.',
+    ],
+  },
+  {
+    id: 'ticketbari',
+    title: 'TicketBari',
+    subtitle: 'Online Ticket Booking Platform',
+    description:
+      'A secure online ticket booking platform enabling users to book tickets, vendors to manage inventory, and admins to run metrics. Supports full payment integration with Stripe and automated role assignments.',
+    category: 'Full-Stack',
+    categories: ['Next.js', 'Full-Stack'],
+    tags: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'BetterAuth',
+      'JWT',
+      'Stripe',
+      'Tailwind CSS',
+      'DaisyUI',
+      'TanStack Query',
+      'Framer Motion',
+    ],
+    image: ticketBariImg,
+    liveLink: 'https://ticket-bari-client-green.vercel.app/',
+    repoLink: 'https://github.com/Tithe-cast/TicketBari_client',
+    challenges: [
+      'Preventing double-booking of seats during high-traffic checkout flows: Solved by implementing atomic MongoDB operations with transaction rolls and optimistic lock fields.',
+      'Securing Stripe transaction webhooks against event spoofing: Configured secure Stripe signature verification keys and designed idempotent backend endpoints to prevent double-charging users.',
+    ],
+  },
+  {
+    id: 'digitools',
+    title: 'DigiTools',
+    subtitle: 'Premium Digital Tools Marketplace',
+    description:
+      'A modern, fully responsive digital tools marketplace. Users can explore, add, and manage premium digital products with a shopping cart, detailed search mechanisms, and local storage state retention.',
+    category: 'Frontend',
+    categories: ['React'],
+    tags: ['React.js', 'Vite', 'JavaScript', 'Tailwind CSS', 'React-Toastify', 'JSON'],
+    image: digiToolsImg,
+    liveLink: 'https://classy-blini-87d8e8.netlify.app',
+    repoLink: 'https://github.com/Tithe-cast/DigiTools-Platform',
+    challenges: [
+      'Synchronizing shopping cart items in real-time across multiple open browser tabs: Solved by adding window-level storage event listeners that refresh state instantly.',
+      'Avoiding UI layout shifts when filtering catalog items: Integrated Framer Motion layout animations to animate item filtering transitions smoothly.',
+    ],
+  },
+  {
+    id: 'docappoint',
+    title: 'DocAppoint',
+    subtitle: 'Doctor Appointment Manager',
+    description:
+      'A modern doctor appointment booking platform that enables users to search for specialized doctors, reserve appointment slots, and manage medical dashboard operations securely.',
+    category: 'Full-Stack',
+    categories: ['React', 'Full-Stack'],
+    tags: [
+      'React',
+      'Tailwind CSS',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'JWT',
+      'BetterAuth',
+      'REST API',
+    ],
+    image: docAppointImg,
+    liveLink: 'https://docappoint-client-virid.vercel.app',
+    repoLink: 'https://github.com/Tithe-cast/docappoint-client',
+    challenges: [
+      'Resolving doctor availability conflicts across different client timezones: Converted all appointment times to ISO UTC format on the server and implemented dynamic overlap checks in DB queries.',
+      'Maintaining session persistence securely across client dashboard tabs: Integrated secure HttpOnly cookies for storing JWT tokens and configured automated token refresh intervals.',
+    ],
+  },
+];
