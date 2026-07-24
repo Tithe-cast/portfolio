@@ -42,7 +42,7 @@ const PageLoader = () => {
             
             <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center shadow-2xl shadow-primary/20 mb-8 animate-pulse">
-                    <span className="text-white font-black text-3xl">S</span>
+                    <span className="text-white font-black text-3xl">Sima.Dev</span>
                 </div>
                 
                 <div className="flex flex-col items-center gap-2">
