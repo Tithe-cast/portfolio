@@ -1,14 +1,34 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Download } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const sectionRef = useRef(null);
+  const [activeTab, setActiveTab] = useState('journey');
+
+  const tabData = {
+    journey: {
+      title: "My Journey",
+      content: "My programming journey began with learning the fundamentals of C and C++, where I developed a solid understanding of programming logic, algorithms, and data structures. As my interest in software engineering grew, I transitioned into web technologies, specializing in the MERN stack (React, Node.js, Express.js, MongoDB) along with TypeScript and Tailwind CSS to build production-grade applications.",
+      highlight: "Logical foundations in C/C++ to full-stack MERN & TypeScript structures"
+    },
+    interests: {
+      title: "Focus Areas",
+      content: "I enjoy developing full-stack web applications, AI-powered tools, and modern software solutions that solve practical problems. I am especially interested in designing responsive interfaces, building efficient backend systems, API integration, Cloud-based systems, and exploring Blockchain technology.",
+      highlight: "Full-stack development, AI integrations, Cloud, and Blockchain"
+    },
+    mindset: {
+      title: "Mindset & Goals",
+      content: "I consider myself a curious, dedicated, and lifelong learner. I believe consistency, patience, and continuous learning are the keys to becoming a better software engineer. Outside of coding, I read technical blogs, watch tech content, listen to music, and spend time with family to recharge my creativity.",
+      highlight: "Consistent problem-solving, clean code, and continuous learning"
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -70,10 +90,10 @@ const About = () => {
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-blue-600/10 rounded-full blur-[120px] -z-10" />
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-rose-500/10 rounded-full blur-[120px] -z-10" />
 
-      {/* Main Grid: Desktop-e ager layout (lg:grid-cols-12) */}
+      {/* Main Grid */}
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-24 items-center relative z-10">
-        {/* Left Side: Content (Desktop-e 6 column) */}
-        <div className="lg:col-span-6 space-y-10 flex flex-col items-center lg:items-start text-center lg:text-left">
+        {/* Left Side: Content & Interactive Tabs */}
+        <div className="lg:col-span-6 space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
           <div className="about-heading space-y-4">
             <span className="bg-gradient-to-r from-blue-400 to-rose-400 bg-clip-text text-transparent font-bold tracking-[0.4em] uppercase text-[10px]">
               The Architect
@@ -83,36 +103,69 @@ const About = () => {
             </h2>
           </div>
 
-          <div className="space-y-6 font-body-lg">
+          <div className="space-y-6 w-full">
             <div className="about-content-item">
               <p className="text-base sm:text-lg lg:text-xl font-medium text-on-background leading-relaxed">
                 I&apos;m{' '}
                 <span className="text-blue-400 font-bold">
                   Syeda Sima
                 </span>
-                , a dedicated{' '}
+                , a Computer Science & Engineering student and dedicated{' '}
                 <span className="text-rose-400 font-bold">
-                  Full-Stack Developer
+                  Full-Stack Web Developer
                 </span>{' '}
-                based in Bangladesh, committed to engineering high-performance
-                and scalable digital solutions.
+                based in Dhaka, Bangladesh, passionate about building user-centric, scalable, and intelligent software.
               </p>
             </div>
 
-            <div className="about-content-item">
-              <p className="text-on-surface-variant/80 leading-relaxed text-sm sm:text-base lg:text-lg">
-                Specializing in the{' '}
-                <span className="text-blue-400 font-semibold">MERN Stack</span>,
-                I bridge the gap between complex backend logic and seamless user
-                interfaces. My focus is on crafting{' '}
-                <span className="text-rose-400 font-semibold">
-                  pixel-perfect frontends
-                </span>{' '}
-                and robust architectures.
-              </p>
+            {/* Interactive Tabs */}
+            <div className="about-content-item w-full space-y-6 pt-2">
+              <div className="flex border-b border-outline-variant/10 pb-2 gap-6 justify-center lg:justify-start">
+                {Object.keys(tabData).map((key) => (
+                  <button
+                    key={key}
+                    onClick={() => setActiveTab(key)}
+                    className={`text-sm sm:text-base font-bold pb-2 relative transition-all duration-300 cursor-pointer ${
+                      activeTab === key
+                        ? 'text-blue-400'
+                        : 'text-on-surface-variant hover:text-on-background'
+                    }`}
+                  >
+                    {tabData[key].title}
+                    {activeTab === key && (
+                      <motion.div
+                        layoutId="activeAboutTab"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-rose-500"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              <div className="min-h-[160px] text-left">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.25 }}
+                    className="space-y-4"
+                  >
+                    <p className="text-on-surface-variant leading-relaxed text-sm sm:text-base">
+                      {tabData[activeTab].content}
+                    </p>
+                    <div className="flex items-center gap-2 text-xs font-bold text-rose-400 uppercase tracking-wider">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
+                      {tabData[activeTab].highlight}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
 
-            <div className="about-content-item pt-4">
+            <div className="about-content-item pt-2 flex justify-center lg:justify-start">
               <a
                 href="#"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-rose-500 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/20"
@@ -133,18 +186,18 @@ const About = () => {
           </div>
         </div>
 
-        {/* Right Side: Professional Bento Grid (Desktop-e 6 column) */}
+        {/* Right Side: Professional Bento Grid */}
         <div className="lg:col-span-6 w-full h-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full h-full">
-            {/* Top Wide Card - Desktop layout logic untouched */}
+            {/* Top Wide Card */}
             <div className="bento-item sm:col-span-2 glass-card p-8 rounded-4xl border border-white/5 hover:border-blue-500/30 transition-all duration-500 flex items-center justify-between group overflow-hidden relative min-h-40 bg-surface-container-low/40 backdrop-blur-xl">
               <div className="absolute inset-0 bg-linear-to-br from-blue-600/10 to-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative z-10 text-left">
                 <h4 className="text-2xl sm:text-3xl font-black text-on-background mb-2 group-hover:text-blue-400 transition-colors">
-                  Problem Solver
+                  Logic & Structures
                 </h4>
                 <p className="text-on-surface-variant/70 text-sm sm:text-base">
-                  Turning complex ideas into elegant solutions.
+                  Strong algorithm skills built on C/C++ and databases.
                 </p>
               </div>
               <span className="material-symbols-outlined text-6xl sm:text-7xl text-on-surface-variant/10 group-hover:text-rose-400/30 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700 relative z-10">
@@ -161,10 +214,10 @@ const About = () => {
                 </span>
               </div>
               <h4 className="text-xl font-bold text-on-background">
-                Clean Code
+                MERN Stack
               </h4>
               <p className="text-[10px] text-blue-400/60 mt-2 tracking-widest uppercase font-black">
-                Architecture
+                Full-Stack
               </p>
             </div>
 
@@ -176,10 +229,10 @@ const About = () => {
                 </span>
               </div>
               <h4 className="text-xl font-bold text-on-background">
-                Lightning Fast
+                Intelligent UI
               </h4>
               <p className="text-[10px] text-rose-400/60 mt-2 tracking-widest uppercase font-black">
-                Performance
+                AI & UX
               </p>
             </div>
           </div>
@@ -190,15 +243,3 @@ const About = () => {
 };
 
 export default About;
-
-
-
-
-
-
-
-
-
-
-
-
