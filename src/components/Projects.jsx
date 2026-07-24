@@ -48,7 +48,7 @@ const Projects = () => {
       categories: ['React', 'Full-Stack'],
       image: devPilotAI,
       liveLink: 'https://dev-pilot-ai-v1-0.vercel.app',
-      repoLink: 'https://github.com/Tithe-cast/DevPilot-AI-v1.0',
+      repoLink: 'https://github.com/Tithe-cast/DevPilot-AI-v1.0.',
     },
     {
       title: 'HireForge',
@@ -94,7 +94,7 @@ const Projects = () => {
       ],
       categories: ['Next.js', 'Full-Stack'],
       image: ticketBari,
-      liveLink: 'https://ticketbari-server-55dz.onrender.com',
+      liveLink: 'https://ticket-bari-client-green.vercel.app/',
       repoLink: 'https://github.com/Tithe-cast/TicketBari_client',
     },
     {
@@ -125,7 +125,7 @@ const Projects = () => {
       ],
       categories: ['React', 'Full-Stack'],
       image: docAppoint,
-      liveLink: 'https://docappoint-server-dl42.onrender.com',
+      liveLink: 'https://docappoint-client-virid.vercel.app',
       repoLink: 'https://github.com/Tithe-cast/docappoint-client',
     },
   ];
