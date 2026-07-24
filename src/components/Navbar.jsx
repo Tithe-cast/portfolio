@@ -85,7 +85,9 @@ const Navbar = () => {
         style={{
           border: scrolled ? '1px solid transparent' : '1px solid transparent',
           backgroundImage: scrolled 
-            ? 'linear-gradient(to right, rgba(20,20,20,0.8), rgba(20,20,20,0.8)), linear-gradient(to right, #3b82f6, #f43f5e)' 
+            ? (theme === 'light'
+              ? 'linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.8)), linear-gradient(to right, #3b82f6, #f43f5e)'
+              : 'linear-gradient(to right, rgba(20,20,20,0.8), rgba(20,20,20,0.8)), linear-gradient(to right, #3b82f6, #f43f5e)')
             : 'none',
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
