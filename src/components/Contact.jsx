@@ -146,7 +146,7 @@ export default function Contact() {
                 <p className="text-muted text-sm mb-4">{item.value}</p>
                 <a
                   href={item.link}
-                  target={item.title === 'LinkedIn' ? '_blank' : undefined}
+                  target={item.title === 'LinkedIn' || item.title === 'WhatsApp' ? '_blank' : undefined}
                   className="text-on-background/70 flex items-center gap-2 font-label-caps text-xs group-hover:gap-4 transition-all"
                 >
                   {item.label} <ArrowRight size={14} />
