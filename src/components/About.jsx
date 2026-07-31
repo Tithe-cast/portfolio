@@ -167,7 +167,9 @@ const About = () => {
 
             <div className="about-content-item pt-2 flex justify-center lg:justify-start">
               <a
-                href="#"
+                href="https://drive.google.com/file/d/195YX-1SPfhf-TuFQJ4MEeXTbUGdaFCm7/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-blue-600 to-rose-500 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/20"
               >
                 {/* Hover overlay animation */}
